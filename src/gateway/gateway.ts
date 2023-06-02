@@ -4,10 +4,30 @@ import {
   WebSocketGateway,
 } from '@nestjs/websockets';
 
-@WebSocketGateway({})
+const defaultChat = [
+  {
+    name: 'Вася',
+    message: 'asdasdasdas',
+  },
+  {
+    name: 'Петя',
+    message: 'asdasdasdas',
+  },
+  {
+    name: 'Гена',
+    message: 'asdasdasdas',
+  },
+];
+
+@WebSocketGateway({
+  cors: {
+    origin: '*',
+  },
+})
 export class MyGateway {
   @SubscribeMessage('newMessage')
   onNewMessage(@MessageBody() body: any) {
-    console.log(body);
+    defaultChat.push(body);
+    return defaultChat;
   }
 }
