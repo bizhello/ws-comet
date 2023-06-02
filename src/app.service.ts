@@ -17,22 +17,22 @@ export class AppService {
   // private readonly logger = new Logger(AppService.name);
   constructor(private readonly httpService: HttpService) {}
 
-  @Interval(15000)
-  async findAll(): Promise<any> {
-    const { data } = await firstValueFrom(
-      this.httpService
-        .get<CurrencyRates>(
-          'http://api.exchangeratesapi.io/v1/latest?access_key=cd0c2bb285addfc267142c7253a55ce2',
-        )
-        .pipe(
-          catchError((error: AxiosError) => {
-            console.log('Ошибка запроса: ', error.response.data);
-            throw 'An error happened!';
-          }),
-        ),
-    );
+  // @Interval(15000)
+  // async findAll(): Promise<any> {
+  //   const { data } = await firstValueFrom(
+  //     this.httpService
+  //       .get<CurrencyRates>(
+  //         'http://api.exchangeratesapi.io/v1/latest?access_key=cd0c2bb285addfc267142c7253a55ce2',
+  //       )
+  //       .pipe(
+  //         catchError((error: AxiosError) => {
+  //           console.log('Ошибка запроса: ', error.response.data);
+  //           throw 'An error happened!';
+  //         }),
+  //       ),
+  //   );
 
-    console.log(data);
-    return;
-  }
+  //   console.log(data);
+  //   return;
+  // }
 }
