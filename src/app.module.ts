@@ -4,10 +4,10 @@ import { ScheduleModule } from '@nestjs/schedule';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GatewayModule } from './gateway/gateway.module';
+import { SocketModule } from './socket/socket.module';
 
 @Module({
-  imports: [ScheduleModule.forRoot(), HttpModule, GatewayModule],
+  imports: [ScheduleModule.forRoot(), HttpModule, SocketModule],
   controllers: [AppController],
   providers: [AppService],
 })
